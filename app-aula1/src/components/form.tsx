@@ -1,12 +1,18 @@
 
 import React, { useState } from 'react'; 
 import {Modal} from "./modal";
+import styled from 'styled-components';
+import Button from '@mui/material/Button';
 
 export function Form () 
 {
     const [modalOpened, setModalOpened] = useState(false);
     const [msg, setMsg] = useState('');
-
+    const Formulario = styled.form`
+        border : 1px solid #0000ff;
+        padding : 4px;
+        font-size : 23px;
+    `
     async function submitForm (event : React.FormEvent<HTMLFormElement>)
     {
         event.preventDefault();
@@ -33,12 +39,12 @@ export function Form ()
     return (
         <>
             <Modal opened={modalOpened} msg={msg} handleCloseModal={setModalOpened} />
-            <form onSubmit={submitForm}>
+            <Formulario onSubmit={submitForm}>
                 <input name="email" type="email" required placeholder="Email"/> 
                 <input name="name" required placeholder="Name" pattern="^[A-Z][a-z]{1,}( [A-Z][a-z]{1,}){0,}$"/>
                 <input name="password" type="password" required placeholder="Password" />         
-                <button>Cadastrar</button>
-            </form>
+                <Button variant="contained">Cadastrar</Button>
+            </Formulario>
         </>
     )
 }
