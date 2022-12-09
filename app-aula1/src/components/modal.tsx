@@ -29,7 +29,8 @@ export function Modal({opened, msg, handleCloseModal} : IModalProps)
         width: "40%",
         height: "40%",
         background: "#f0f0f0",
-        justifyContent: "center"
+        justifyContent: "center",
+        flexDirection: "column"
     }
 
     const topStyle : CSSProperties = {
@@ -38,6 +39,16 @@ export function Modal({opened, msg, handleCloseModal} : IModalProps)
         height: "10%",
         background: "rgb(92,92,92)",
         justifyContent: "right",
+        alignItems: "center"
+    }
+
+    const bodyStyle : CSSProperties = {
+        display: "flex",
+        width: "100%",
+        height: "90%",
+        background: "#f0f0f0",
+        color: "#282828",
+        justifyContent: "center",
         alignItems: "center"
     }
 
@@ -52,7 +63,7 @@ export function Modal({opened, msg, handleCloseModal} : IModalProps)
                 <div style={topStyle}>
                     <button style={closeStyle} onClick={() => handleCloseModal(false)}>X</button>
                 </div> 
-                <div>
+                <div style={bodyStyle}>
                     <p>{msg}</p>
                 </div>
             </div>    
